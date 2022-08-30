@@ -8,19 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		EA23B9D028B763AD00021BCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23B9CF28B763AD00021BCB /* AppDelegate.swift */; };
-		EA23B9D228B763AD00021BCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23B9D128B763AD00021BCB /* SceneDelegate.swift */; };
 		EA23B9D428B763AD00021BCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23B9D328B763AD00021BCB /* ViewController.swift */; };
-		EA23B9D728B763AD00021BCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA23B9D528B763AD00021BCB /* Main.storyboard */; };
 		EA23B9D928B763AD00021BCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA23B9D828B763AD00021BCB /* Assets.xcassets */; };
 		EA23B9DC28B763AD00021BCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA23B9DA28B763AD00021BCB /* LaunchScreen.storyboard */; };
+		EA23B9EB28B76B9300021BCB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EA23B9EA28B76B9300021BCB /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EA23B9CC28B763AD00021BCB /* HW12-iOS7-Bogomolov.Andrey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW12-iOS7-Bogomolov.Andrey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA23B9CF28B763AD00021BCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EA23B9D128B763AD00021BCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EA23B9D328B763AD00021BCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EA23B9D628B763AD00021BCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA23B9D828B763AD00021BCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA23B9DB28B763AD00021BCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA23B9DD28B763AD00021BCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA23B9EB28B76B9300021BCB /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +54,61 @@
 		EA23B9CE28B763AD00021BCB /* HW12-iOS7-Bogomolov.Andrey */ = {
 			isa = PBXGroup;
 			children = (
-				EA23B9CF28B763AD00021BCB /* AppDelegate.swift */,
-				EA23B9D128B763AD00021BCB /* SceneDelegate.swift */,
-				EA23B9D328B763AD00021BCB /* ViewController.swift */,
-				EA23B9D528B763AD00021BCB /* Main.storyboard */,
-				EA23B9D828B763AD00021BCB /* Assets.xcassets */,
-				EA23B9DA28B763AD00021BCB /* LaunchScreen.storyboard */,
-				EA23B9DD28B763AD00021BCB /* Info.plist */,
+				EA23B9E428B7674F00021BCB /* Sources */,
+				EA23B9E328B7674000021BCB /* Resources */,
 			);
 			path = "HW12-iOS7-Bogomolov.Andrey";
+			sourceTree = "<group>";
+		};
+		EA23B9E328B7674000021BCB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EA23B9D828B763AD00021BCB /* Assets.xcassets */,
+				EA23B9E828B7679E00021BCB /* Storyboards */,
+				EA23B9E728B7679400021BCB /* Configs */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EA23B9E428B7674F00021BCB /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EA23B9E628B7677F00021BCB /* Scenes */,
+				EA23B9E528B7677800021BCB /* App */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		EA23B9E528B7677800021BCB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EA23B9CF28B763AD00021BCB /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EA23B9E628B7677F00021BCB /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				EA23B9D328B763AD00021BCB /* ViewController.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		EA23B9E728B7679400021BCB /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				EA23B9DD28B763AD00021BCB /* Info.plist */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		EA23B9E828B7679E00021BCB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				EA23B9DA28B763AD00021BCB /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +127,9 @@
 			dependencies = (
 			);
 			name = "HW12-iOS7-Bogomolov.Andrey";
+			packageProductDependencies = (
+				EA23B9EA28B76B9300021BCB /* SnapKit */,
+			);
 			productName = "HW12-iOS7-Bogomolov.Andrey";
 			productReference = EA23B9CC28B763AD00021BCB /* HW12-iOS7-Bogomolov.Andrey.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +158,9 @@
 				Base,
 			);
 			mainGroup = EA23B9C328B763AD00021BCB;
+			packageReferences = (
+				EA23B9E928B76B9300021BCB /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = EA23B9CD28B763AD00021BCB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +177,6 @@
 			files = (
 				EA23B9DC28B763AD00021BCB /* LaunchScreen.storyboard in Resources */,
 				EA23B9D928B763AD00021BCB /* Assets.xcassets in Resources */,
-				EA23B9D728B763AD00021BCB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,21 +189,12 @@
 			files = (
 				EA23B9D428B763AD00021BCB /* ViewController.swift in Sources */,
 				EA23B9D028B763AD00021BCB /* AppDelegate.swift in Sources */,
-				EA23B9D228B763AD00021BCB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EA23B9D528B763AD00021BCB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA23B9D628B763AD00021BCB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EA23B9DA28B763AD00021BCB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,7 +256,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +310,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -289,12 +329,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LKD3YJQGNW;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "HW12-iOS7-Bogomolov.Andrey/Info.plist";
+				INFOPLIST_FILE = "HW12-iOS7-Bogomolov.Andrey/Resources/Configs/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +345,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,12 +358,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LKD3YJQGNW;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "HW12-iOS7-Bogomolov.Andrey/Info.plist";
+				INFOPLIST_FILE = "HW12-iOS7-Bogomolov.Andrey/Resources/Configs/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,7 +374,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -358,6 +400,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EA23B9E928B76B9300021BCB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EA23B9EA28B76B9300021BCB /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA23B9E928B76B9300021BCB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EA23B9C428B763AD00021BCB /* Project object */;
 }
