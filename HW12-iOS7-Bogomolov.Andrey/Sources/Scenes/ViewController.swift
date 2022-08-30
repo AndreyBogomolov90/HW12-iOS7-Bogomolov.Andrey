@@ -13,7 +13,9 @@ class ViewController: UIViewController {
     // MARK: - Elements
 
     private var timer = Timer()
-    private var counter = 25.0
+    private let workTime = 5.0
+    private let restTime = 3.0
+    private lazy var counter = workTime
     private var shapeLayer = CAShapeLayer()
     private var trackLayer = CAShapeLayer()
     private var isWorkTime = true
@@ -61,6 +63,16 @@ class ViewController: UIViewController {
         return stack
     }()
     
+    // MARK: - Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupHierarchy()
+        setupLayout()
+    }
+    
+    // MARK: - Private functions
+   
     private func createShapeLayer() {
         let viewCircle = UIView()
         viewCircle.backgroundColor = .clear
@@ -87,7 +99,7 @@ class ViewController: UIViewController {
         shapeLayer.lineCap = CAShapeLayerLineCap.round
         shapeLayer.lineWidth = 12
         shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = UIColor.white.cgColor
+        shapeLayer.strokeColor = UIColor.systemGray5.cgColor
         shapeLayer.strokeEnd = 0
         viewCircle.layer.addSublayer(shapeLayer)
     }
@@ -122,17 +134,6 @@ class ViewController: UIViewController {
         let seconds = Int(time) % 60
         return String(format: "%02i:%02i", minutes, seconds)
     }
-    
- 
-    // MARK: - Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupHierarchy()
-        setupLayout()
-    }
-    
-    // MARK: - Setup
         
     private func setupHierarchy() {
         view.backgroundColor = .white
@@ -159,87 +160,82 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: - Actions
-    
-    @objc private func playButtonPressed() {
-        if isStarted {
+    private func changeState() {
             if isWorkTime {
-                startStopLabel.text = "Click to stop WORKTIME"
-                startStopLabel.textColor = .systemRed
-                timer = Timer.scheduledTimer(timeInterval: 0.001,
-                                             target: self,
-                                             selector: #selector(timerAction),
-                                             userInfo: nil,
-                                             repeats: true)
-                playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
-                counter == 25 ? basicAnimation() : resumeAnimation(shapeLayer)
-                playPauseButton.tintColor = .systemRed
-                isWorkTime = true
-                isStarted = false
-            } else {
-                startStopLabel.text = "Click to stop RESTTIME"
-                startStopLabel.textColor = .systemGreen
-                timer = Timer.scheduledTimer(timeInterval: 0.001,
-                                             target: self,
-                                             selector: #selector(timerAction),
-                                             userInfo: nil,
-                                             repeats: true)
-                counter == 5 ? basicAnimation() : resumeAnimation(shapeLayer)
                 playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
                 playPauseButton.tintColor = .systemGreen
-                isWorkTime = false
-                isStarted = false
-            }
-        } else {
-            timer.invalidate()
-            if isWorkTime {
-                startStopLabel.text = "Click to start WORKTIME"
-                startStopLabel.textColor = .systemRed
-                playPauseButton.setImage(UIImage(named: "play"), for: .normal)
-                playPauseButton.tintColor = .systemRed
-                pauseAnimation(shapeLayer)
-                isWorkTime = true
-                isStarted = true
-            } else {
+                labelTimer.textColor = .systemGreen
+                trackLayer.strokeColor = UIColor.systemGreen.cgColor
                 startStopLabel.text = "Click to start RESTTIME"
                 startStopLabel.textColor = .systemGreen
-                playPauseButton.setImage(UIImage(named: "play"), for: .normal)
-                playPauseButton.tintColor = .systemGreen
-                pauseAnimation(shapeLayer)
-                isStarted = true
-                isWorkTime = false
+                return
             }
-        }
-    }
-    
-    @objc private func timerAction() {
-        if counter <= 0, !isStarted, isWorkTime {
-            playPauseButton.setImage(UIImage(named: "play"), for: .normal)
-            playPauseButton.tintColor = .systemGreen
-            labelTimer.textColor = .systemGreen
-            trackLayer.strokeColor = UIColor.systemGreen.cgColor
-            timer.invalidate()
-            counter = 5
-            startStopLabel.text = "Click to start RESTTIME"
-            startStopLabel.textColor = .systemGreen
-            labelTimer.text = "\(timeString(time: TimeInterval(counter)))"
-            isStarted = true
-            isWorkTime = false
-        } else if counter <= 0, !isStarted, !isWorkTime {
-            playPauseButton.setImage(UIImage(named: "play"), for: .normal)
+            playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
             playPauseButton.tintColor = .systemRed
             trackLayer.strokeColor = UIColor.systemRed.cgColor
             labelTimer.textColor = .systemRed
-            timer.invalidate()
-            counter = 25
             startStopLabel.text = "Click to start WORKTIME"
             startStopLabel.textColor = .systemRed
-            labelTimer.text = "\(timeString(time: TimeInterval(counter)))"
+        }
+    
+    // MARK: - Actions
+    
+    @objc private func playButtonPressed() {
+        guard isStarted else {
+            timer.invalidate()
+            if isWorkTime {
+                startStopLabel.text = "Click to start WORKTIME"
+                playPauseButton.setImage(UIImage(named: "play"), for: .normal)
+                playPauseButton.tintColor = .systemRed
+                pauseAnimation(shapeLayer)
+                isWorkTime = true
+            } else {
+                startStopLabel.text = "Click to start RESTTIME"
+                playPauseButton.setImage(UIImage(named: "play"), for: .normal)
+                playPauseButton.tintColor = .systemGreen
+                pauseAnimation(shapeLayer)
+                isWorkTime = false
+            }
             isStarted = true
+            return
+        }
+        if isWorkTime {
+            startStopLabel.text = "Click to stop WORKTIME"
+            startStopLabel.textColor = .systemRed
+            timer = Timer.scheduledTimer(timeInterval: 0.001,
+                                         target: self,
+                                         selector: #selector(timerAction),
+                                         userInfo: nil,
+                                         repeats: true)
+            playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
+            counter == workTime ? basicAnimation() : resumeAnimation(shapeLayer)
+            playPauseButton.tintColor = .systemRed
             isWorkTime = true
         } else {
-            counter -= 0.001
-            labelTimer.text = "\(timeString(time: TimeInterval(counter)))"
+            startStopLabel.text = "Click to stop RESTTIME"
+            startStopLabel.textColor = .systemGreen
+            timer = Timer.scheduledTimer(timeInterval: 0.001,
+                                         target: self,
+                                         selector: #selector(timerAction),
+                                         userInfo: nil,
+                                         repeats: true)
+            counter == restTime ? basicAnimation() : resumeAnimation(shapeLayer)
+            playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
+            playPauseButton.tintColor = .systemGreen
+            isWorkTime = false
         }
+        isStarted = false
+    }
+    
+    @objc private func timerAction() {
+        counter -= 0.001
+        labelTimer.text = "\(timeString(time: TimeInterval(counter)))"
+        
+        guard counter <= 0 else { return }
+        
+        counter = isWorkTime ? restTime : workTime
+        changeState()
+        isWorkTime.toggle()
+        basicAnimation()
     }
 }
